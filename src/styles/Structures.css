@@ -1,0 +1,123 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HERO */
+.hero{
+  height: 75vh;
+  width: 100%;
+  background-color: white;
+  margin-bottom: 20vh;
+}
+
+/* RECENTLY ADDED */
+.RD{
+    height: 85vh;
+    width: 95%;
+    background-color: white;
+    margin: auto;
+    margin-bottom: 18vh;
+}
+
+/* TRENDING */
+.trending{
+    height: 55vh;
+    width: 80%;
+    background-color: white;
+    margin: auto;
+    margin-bottom: 18vh;
+}
+
+/* MOST POPULAR */
+.MP{
+    height: 85vh;
+    width: 95%;
+    margin: auto;
+    background-color: white;
+    margin-bottom: 18vh;
+}
+
+/* TOP RATED */
+.Toprated{
+    height: 85vh;
+    width: 95%;
+    background-color: white;
+    margin: auto;
+    margin-bottom: 5vh;
+}
+
+
+/* media-query  */
+@media screen and (max-width: 1024px) and (min-width: 959px) {
+    .hero{
+        height: 47vh;
+        margin-bottom: 10vh;
+    }
+    .RD{
+        height: 55vh;
+        margin-bottom: 10vh;
+    }
+    .trending{
+        height: 30vh;
+        margin-bottom: 10vh;
+        width: 88%;
+    }
+    .MP{
+        height: 55vh;
+        margin-bottom: 10vh;
+    }
+    .Toprated{
+        height: 55vh;
+        margin-bottom: 10vh;
+    }
+}
+@media screen and (max-width: 958px) and (min-width: 769px)  {
+      .hero{
+        height: 47vh;
+        margin-bottom: 10vh;
+    }
+    .RD{
+        height: 55vh;
+        margin-bottom: 10vh;
+    }
+    .trending{
+        height: 30vh;
+        margin-bottom: 10vh;
+        width: 88%;
+    }
+    .MP{
+        height: 55vh;
+        margin-bottom: 10vh;
+    }
+    .Toprated{
+        height: 55vh;
+        margin-bottom: 10vh;
+    }
+    
+}
+@media screen and (max-width: 769px){
+      .hero{
+        height: 32vh;
+        margin-bottom: 10vh;
+    }
+    .RD{
+        height: 45vh;
+        margin-bottom: 10vh;
+    }
+    .trending{
+        height: 30vh;
+        margin-bottom: 10vh;
+        width: 88%;
+    }
+    .MP{
+        height: 45vh;
+        margin-bottom: 10vh;
+    }
+    .Toprated{
+        height: 45vh;
+        margin-bottom: 10vh;
+    }
+
+}
