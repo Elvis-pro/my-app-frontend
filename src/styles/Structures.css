@@ -6,10 +6,14 @@
 
 /* HERO */
 .hero{
-  height: 75vh;
+  height: auto;
   width: 100%;
-  background-color: white;
   margin-bottom: 20vh;
+}
+
+.pag-button{
+    margin-top: 28px;
+    margin-left: 25px;
 }
 
 /* RECENTLY ADDED */
