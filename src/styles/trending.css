@@ -4,3 +4,115 @@
     margin: 0;
 }
 
+.trending-section {
+  margin: 20px 0;
+  color: #fff;
+}
+
+.trending-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trending-header h2 {
+  font-size: 1.5rem;
+}
+
+.more-btn {
+  background: #222;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+
+.trending-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.trending-card {
+  background: #111a2b;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.trending-card:hover{
+    cursor: pointer;
+}
+
+.trending-card .poster img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.trending-card .info {
+  padding: 10px;
+}
+
+.trending-card h3 {
+  font-size: 1rem;
+  margin: 5px 0;
+}
+
+.trending-card p {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+/* media-queries */
+
+@media screen and (max-width: 1024px) and (min-width: 959px){
+  .more-btn{
+    position: absolute;
+    right: 63px;
+  }
+}
+
+@media screen and (max-width: 958px) and (min-width: 769px){
+  .more-btn{
+    position: absolute;
+    right: 50px;
+  }
+}
+
+@media screen and (max-width: 769px){
+  .more-btn{
+    position: absolute;
+    right: 48px;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .trending-header h2{
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .more-btn{
+    position: absolute;
+    right: 23px;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+  }
+  .info h3{
+    font-size: 0.7rem;
+    font-weight: 500;
+    width: auto;
+  }
+  .info p{
+    font-size: 0.7rem;
+    font-weight: 500;
+    width: auto;
+  }
+  .trending-grid{
+    gap: 10px;
+  }
+}

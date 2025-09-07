@@ -13,23 +13,19 @@
 
 .pag-button{
     margin-top: 28px;
-    margin-left: 25px;
+    padding-left: 25px;
 }
 
 /* RECENTLY ADDED */
 .RD{
-    height: 85vh;
     width: 95%;
-    background-color: white;
     margin: auto;
     margin-bottom: 18vh;
 }
 
 /* TRENDING */
 .trending{
-    height: 55vh;
     width: 80%;
-    background-color: white;
     margin: auto;
     margin-bottom: 18vh;
 }
@@ -56,15 +52,14 @@
 /* media-query  */
 @media screen and (max-width: 1024px) and (min-width: 959px) {
     .hero{
-        height: 47vh;
         margin-bottom: 10vh;
     }
     .RD{
-        height: 55vh;
         margin-bottom: 10vh;
+        width: 98%;
     }
     .trending{
-        height: 30vh;
+        /* height: 30vh; */
         margin-bottom: 10vh;
         width: 88%;
     }
@@ -79,15 +74,14 @@
 }
 @media screen and (max-width: 958px) and (min-width: 769px)  {
       .hero{
-        height: 47vh;
         margin-bottom: 10vh;
+        width: 100%;
     }
     .RD{
-        height: 55vh;
         margin-bottom: 10vh;
+        width: 100%;
     }
     .trending{
-        height: 30vh;
         margin-bottom: 10vh;
         width: 88%;
     }
@@ -98,20 +92,21 @@
     .Toprated{
         height: 55vh;
         margin-bottom: 10vh;
+    }
+    .pag-button{
+       padding-left: 10px; 
     }
     
 }
 @media screen and (max-width: 769px){
-      .hero{
-        height: 32vh;
+    .hero{
         margin-bottom: 10vh;
     }
     .RD{
-        height: 45vh;
         margin-bottom: 10vh;
+        width: 100%;
     }
     .trending{
-        height: 30vh;
         margin-bottom: 10vh;
         width: 88%;
     }
@@ -123,5 +118,7 @@
         height: 45vh;
         margin-bottom: 10vh;
     }
-
+    .pag-button{
+       padding-left: 10px;
+    }
 }

@@ -6,7 +6,7 @@ export default function Hero (){
     return(
         <div className="hero">
             <MCarousel />
-            <div className="custom-pagination pag-button"></div>
+            {/* <div className="custom-pagination pag-button"></div> */}
         </div>
     )
 }

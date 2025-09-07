@@ -14,6 +14,7 @@
 
 .swiper-pagination {
   bottom: 10px !important;
+  padding-left: 82%;
 }
 
 .swiper-pagination-bullet {
@@ -28,3 +29,40 @@
 .swiper-pagination-bullet-active {
   background-color: #1e90ff;
 }
+
+
+/* media query */
+
+@media screen and (max-width: 1024px) and (min-width: 959px) {
+  .swiper{
+    height: auto;
+  }
+  
+  .swiper-pagination {
+    padding-left: 75%;
+  }
+
+}
+@media screen and (max-width: 958px) and (min-width: 769px) {
+  .swiper{
+    height: auto;
+  }
+  .swiper-pagination{
+    padding-left: 70%;
+  }
+
+}
+@media screen and (max-width: 769px){
+  .swiper{
+    height: auto;
+  }
+  .swiper-pagination-bullet{
+    height: 1vh;
+    width: 23px;
+  }
+  .swiper-pagination{
+    padding-left: 75%;
+    margin-bottom: -1.2vh;
+  }
+}
+
