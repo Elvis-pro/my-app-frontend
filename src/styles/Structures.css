@@ -32,18 +32,14 @@
 
 /* MOST POPULAR */
 .MP{
-    height: 85vh;
     width: 95%;
     margin: auto;
-    background-color: white;
     margin-bottom: 18vh;
 }
 
 /* TOP RATED */
 .Toprated{
-    height: 85vh;
     width: 95%;
-    background-color: white;
     margin: auto;
     margin-bottom: 5vh;
 }
@@ -111,12 +107,12 @@
         width: 88%;
     }
     .MP{
-        height: 45vh;
         margin-bottom: 10vh;
+        width: 100%;
     }
     .Toprated{
-        height: 45vh;
         margin-bottom: 10vh;
+        width: 100%;
     }
     .pag-button{
        padding-left: 10px;
