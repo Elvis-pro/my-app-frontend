@@ -1,31 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/movieSeriesGrid.css";
 
-const movies = [
-  { title: "Jungle cruise", year: 2021, rating: 6.5, image: "/images/jungle-cruise.jpg" },
-  { title: "A quiet place part II", year: 2021, rating: 7.2, image: "/images/quiet-place-2.jpg" },
-  { title: "Rango 2", year: 2023, rating: 6.8, image: "/images/rango-2.jpg" },
-  { title: "Atlas", year: 2024, rating: 5.6, image: "/images/atlas.jpg" },
-  { title: "Heads of State", year: 2025, rating: 6.8, image: "/images/heads-of-state.jpg" },
-  { title: "Kraven the hunter", year: 2024, rating: 7.2, image: "/images/kraven.jpg" },
-  { title: "Resident evil: Death island", year: 2023, rating: 5.0, image: "/images/resident-evil.jpg" },
-  { title: "Hitman’s bodyguard", year: 2017, rating: 6.9, image: "/images/hitman-bodyguard.jpg" },
-];
-
-const series = [
-  { title: "Breaking Bad", year: 2008, rating: 9.5, image: "/images/breaking-bad.jpg" },
-  { title: "Stranger Things", year: 2016, rating: 8.7, image: "/images/stranger-things.jpg" },
-  { title: "The Witcher", year: 2019, rating: 8.2, image: "/images/witcher.jpg" },
-  { title: "Loki", year: 2021, rating: 8.3, image: "/images/loki.jpg" },
-  { title: "Game of Thrones", year: 2011, rating: 9.3, image: "/images/got.jpg" },
-  { title: "Peaky Blinders", year: 2013, rating: 8.8, image: "/images/peaky-blinders.jpg" },
-  { title: "Money Heist", year: 2017, rating: 8.2, image: "/images/money-heist.jpg" },
-  { title: "Wednesday", year: 2022, rating: 8.1, image: "/images/wednesday.jpg" },
-];
-
 export default function MovieList() {
+  // const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("movies");
   const [loading, setLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [series, setSeries] = useState([]);
+
+  // Fetch data on mount
+  useEffect(() => {
+    fetchMovies();
+    fetchSeries();
+  }, []);
+
+  const fetchMovies = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/movies/getRecentlyAdded");
+      const data = await res.json();
+      setMovies(data);
+    } catch (error) {
+      console.error("Error fetching movies:", error);
+    }
+  };
+
+  const fetchSeries = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/series/getRecentlyAddedSeries");
+      const data = await res.json();
+      setSeries(data);
+    } catch (error) {
+      console.error("Error fetching series:", error);
+    }
+  };
 
   const handleTabChange = (tab) => {
     if (tab !== activeTab) {
@@ -33,11 +41,12 @@ export default function MovieList() {
       setTimeout(() => {
         setActiveTab(tab);
         setLoading(false);
-      }, 1000); // simulate loading delay
+      }, 1000); // keep skeleton loader visible briefly
     }
   };
 
-  const data = activeTab === "movies" ? movies : series;
+  // Limit to 8 items
+  const data = activeTab === "movies" ? movies.slice(0, 8) : series.slice(0, 8);
 
   return (
     <div className="movie-section">
@@ -60,7 +69,7 @@ export default function MovieList() {
         >
           TV Series
         </button>
-        <button className="more-btn">More</button>
+        <button className="more-btn"  onClick={() => navigate("")}>More</button>
       </div>
 
       {/* Loader or Movie Grid */}
@@ -70,7 +79,6 @@ export default function MovieList() {
             <div key={i} className="movie-card skeleton-card">
               <div className="poster skeleton"></div>
               <div className="info">
-                
                 <div className="skeleton skeleton-text title"></div>
                 <div className="skeleton skeleton-text year"></div>
               </div>
