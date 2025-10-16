@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/movieSeriesGrid.css";
 
 export default function MovieList() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("movies");
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -69,7 +69,7 @@ export default function MovieList() {
         >
           TV Series
         </button>
-        <button className="more-btn"  onClick={() => navigate("")}>More</button>
+        <button className="more-btn"  onClick={() => navigate("/morerecentlyadded")}>More</button>
       </div>
 
       {/* Loader or Movie Grid */}
