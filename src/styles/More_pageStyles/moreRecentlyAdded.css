@@ -28,16 +28,33 @@
 }
 
 /* Skeleton card */
-.skeleton-card .mra-poster {
+
+.skeleton1-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton1-card .mra-poster {
   width: 100%;
   height: 240px;
   border-radius: 8px;
 }
 
-.skeleton-card .info {
+.skeleton1-card .info {
   padding: 10px;
   text-align: center;
 }
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
 
 .skeleton-text {
   height: 12px;
@@ -94,9 +111,15 @@
 }
 
 div .mra-movie-grid {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
+}
+
+div .mra-movie-grid.loading{
+  opacity: 0.3;
 }
 
 div .movie-card-tv {
@@ -134,7 +157,6 @@ div .info {
 }
 
 div .info .mrah3 {
-  font-size: 18px;
   font-weight: 500;
   margin: 0;
   white-space: nowrap;
@@ -195,12 +217,15 @@ div .info .year{
   div .movie-info{
     display: block;
   }
-  div .info p{
+  div .info .mra-P{
     text-align: center;
     margin-bottom: 0;
   }
-  div .info h3{
+  div .info .mrah3{
     text-align: center;
+  }
+  .skeleton1-card{
+    display: block;
   }
 }
 @media screen and (max-width: 958px) and (min-width: 769px){
@@ -214,12 +239,15 @@ div .info .year{
   div .movie-info{
     display: block;
   }
-  div .info p{
+  div .info .mra-P{
     text-align: center;
     margin-bottom: 0;
   }
-  div .info h3{
+  div .info .mrah3{
     text-align: center;
+  }
+  .skeleton1-card{
+    display: block;
   }
 
 }
@@ -243,12 +271,15 @@ div .info .year{
   div .movie-info{
     display: block;
   }
-  div .info p{
+  div .info .mra-P{
     text-align: center;
     margin-bottom: 0;
   }
-  div .info h3{
+  div .info .mrah3{
     text-align: center;
+  }
+  .skeleton1-card{
+    display: block;
   }
 }
 
@@ -277,22 +308,28 @@ div .info .year{
     font-weight: 600;
   }
 
-  .skeleton-card .mra-poster {
+  .skeleton1-card .mra-poster {
     width: 100%;
-    height: 21vh;
+    height: 45vh;
     border-radius: 8px;
   }
 
   div .info .mrah3{
-    font-size: 0.7rem;
+    font-size: 1rem;
     font-weight: 500;
     width: auto;
+    text-align: center;
+  }
+
+  div .info .mra-P{
+    text-align: center;
   }
   
   div .info .year{
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: 500;
     width: auto;
+    text-align: center;
   }
   .filter-buttons button {
     margin-right: 6px;
@@ -303,6 +340,9 @@ div .info .year{
     font-size: 10px;
     background: #222;
     color: #aaa;
+  }
+  .skeleton1-card{
+    display: block;
   }
 }
 

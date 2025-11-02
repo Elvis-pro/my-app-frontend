@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/trending.css";
 
 export default function TrendingList() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("movies");
   const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -76,7 +76,7 @@ export default function TrendingList() {
       {/* Header */}
       <div className="trending-header">
         <h2>Trending</h2>
-        <button className="more-btn" onClick={() => navigate("")}>More</button>
+        <button className="more-btn" onClick={() => navigate("/moretrending")}>More</button>
       </div>
 
       {/* Filter Buttons */}
