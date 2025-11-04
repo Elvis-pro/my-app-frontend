@@ -1,11 +1,175 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0b0e13;
+  color: white;
+  padding: 18px 10px;
+  position: relative;
+  z-index: 20;
 }
 
-.navbar{
-    height: 9vh;
-    width: 100%;
-    background-color: white;
+.logo {
+  font-size: 1.7rem;
 }
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-center {
+  width: 62%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.search-input {
+  width: 70%;
+  max-width: 600px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  margin-bottom: 30px;
+  background-color: #151a24;
+  color: white;
+}
+
+.search-results {
+  width: 70%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: left;
+}
+
+.search-item {
+  background-color: #1b2230;
+  padding: 15px 20px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  transition: background 0.2s;
+}
+
+.search-item:hover {
+  background-color: #243045;
+}
+
+.loading-text,
+.no-results {
+  color: #aaa;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+
+/* ==== FULLSCREEN OVERLAY ==== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(10, 12, 20, 0.98);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease forwards;
+  z-index: 15;
+}
+
+.close-btn {
+  position: absolute;
+  top: 69px;
+  right: 40px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.overlay-content h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  width: 80%;
+  max-width: 800px;
+}
+
+.genre-item {
+  background-color: #151a24;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.genre-item:hover {
+  background-color: #1f2a3c;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.navbar-search {
+  background-color: #151a24;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  margin-right: 10px;
+  outline: none;
+  transition: 0.3s ease;
+  width: 180px;
+}
+
+.navbar-search:focus {
+  width: 280px;
+  background-color: #1e3a8a;
+}
+/* Keep the rest of your .overlay, .search-results, etc. styles */
+
