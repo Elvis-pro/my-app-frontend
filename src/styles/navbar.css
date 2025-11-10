@@ -55,7 +55,7 @@
 }
 
 .search-results {
-  width: 70%;
+  width: 95%;
   max-width: 800px;
   display: flex;
   flex-direction: column;
@@ -85,10 +85,9 @@
   margin-top: 20px;
 }
 
-
 /* ==== FULLSCREEN OVERLAY ==== */
 .overlay {
-  position: fixed;
+ position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -104,8 +103,8 @@
 
 .close-btn {
   position: absolute;
-  top: 69px;
-  right: 40px;
+  top: 72px;
+  right: 20px;
   background: none;
   border: none;
   color: white;
@@ -154,6 +153,7 @@
     transform: translateY(0);
   }
 }
+
 .navbar-search {
   background-color: #151a24;
   color: white;
@@ -171,5 +171,116 @@
   width: 280px;
   background-color: #1e3a8a;
 }
-/* Keep the rest of your .overlay, .search-results, etc. styles */
 
+/* === RECENT SEARCHES BOX === */
+.recent-box {
+  background-color: #1b2230;
+  padding: 20px 25px;
+  border-radius: 10px;
+  width: 70%;
+  max-width: 600px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.recent-box h3 {
+  color: #60a5fa;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.recent-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recent-box li {
+  padding: 10px 0;
+  border-bottom: 1px solid #2c3448;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.recent-box li:hover {
+  color: #60a5fa;
+}
+
+/* === OVERLAY CONTENT ENHANCEMENT === */
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.overlay-content h2 {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+/* === ANIMATION === */
+.search-grid {
+  animation: fadeIn 0.4s ease;
+}
+
+.see-all {
+  color: #60a5fa;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.see-all:hover {
+  color: #93c5fd;
+}
+
+/* SEARCH DIVS CSS SCRIPTS */
+
+.search-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 90%;
+}
+
+.search-card {
+  background-color: #151a24;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  color: #fff;
+  cursor: pointer;
+}
+
+.search-poster{
+  height: 46vh;
+}
+
+.search-poster img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.search-info {
+  padding: 0.6rem;
+  text-align: center;
+}
+
+.search-info h3 {
+  font-size: 1rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+}
+
+.search-type {
+  color: #999;
+  font-size: 0.85rem;
+}

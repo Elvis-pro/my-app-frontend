@@ -1,4 +1,3 @@
-// src/components/MovieList.js
 import React, { useState, useEffect, useRef } from "react";
 import "../styles/More_pageStyles/moreRecentlyAdded.css";
 
@@ -13,34 +12,47 @@ export default function MovieList({ title, movieApi, seriesApi }) {
   const cardRefs = useRef([]);
 
   useEffect(() => {
-    fetchMovies();
-    fetchSeries();
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth <= 768); // ✅ Detect mobile view
+    };
 
-    const handleResize = () => setIsMobile(window.innerWidth <= 700);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    checkScreenSize(); // Run on mount
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  const fetchMovies = async () => {
-    try {
-      const res = await fetch(movieApi);
-      const data = await res.json();
-      setMovies(data);
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-    }
-  };
 
-  const fetchSeries = async () => {
-    try {
-      const res = await fetch(seriesApi);
-      const data = await res.json();
-      setSeries(data);
-    } catch (error) {
-      console.error("Error fetching series:", error);
-    }
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        if (!movieApi) return;
+
+        const res = await fetch(movieApi);
+        const data = await res.json();
+
+        // ✅ Detect response type (either {movies, series} or just [] array)
+        if (data.movies && Array.isArray(data.movies)) {
+          setMovies(data.movies);
+          setSeries(data.series || []); // if also provided
+        } else if (Array.isArray(data)) {
+          setMovies(data);
+        }
+
+        // ✅ Fetch series only if separate endpoint exists
+        if (seriesApi) {
+          const res2 = await fetch(seriesApi);
+          const data2 = await res2.json();
+          if (Array.isArray(data2)) setSeries(data2);
+        }
+
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }
+    };
+
+    fetchData();
+  }, [movieApi, seriesApi]);
 
   const handleTabChange = (tab) => {
     if (tab !== activeTab) {

@@ -1,4 +1,3 @@
-// src/pages/RecentlyAdded.jsx
 import MovieList from "../component/movieList";
 
 export default function RecentlyAdded() {

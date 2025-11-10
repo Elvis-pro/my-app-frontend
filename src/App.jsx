@@ -5,6 +5,7 @@ import MoreTopRated from "./More_pages/moreTopRated";
 import MoreTrending from "./More_pages/moreTrending";
 import Home from "../src/pages/home";
 import Navbar from "../src/Navbar/navbar";
+import GenrePage from "../src/pages/genrePages";
 
 export default function app (){
   return (
@@ -16,6 +17,7 @@ export default function app (){
         <Route path="/moretrending" element={<MoreTrending />} />
         <Route path="/moremostpopular" element={<MoreMostPopular />} />
         <Route path="/moretoprated" element={< MoreTopRated/>} />
+        <Route path="/genre/:genre" element={<GenrePage />} />
       </Routes>
     </Router>
   )

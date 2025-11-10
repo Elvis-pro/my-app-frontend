@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 
 const Navbar = () => {
@@ -7,10 +8,18 @@ const Navbar = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showSearchOverlay, setShowSearchOverlay] = useState(false);
+  const navigate = useNavigate();
+  const debounceRef = useRef(null);
 
   const handleDropdownClick = (name) => {
     setActiveDropdown((prev) => (prev === name ? null : name));
     setShowSearchOverlay(false);
+  };
+
+
+  const handleGenreClick = (genre) => {
+    setActiveDropdown(null);
+    navigate(`/genre/${genre}`);
   };
 
   useEffect(() => {
@@ -29,21 +38,29 @@ const Navbar = () => {
 
   const overlays = {
     tv: ["Action", "Comedy", "Drama", "Mystery", "Fantasy", "Animation"],
-    movies: ["Adventure", "Horror", "Sci-Fi", "Crime", "Romance", "Thriller"],
+    movies: ["International", "Nollywood", "bollywood", "Chinese Movies", "Korean Movies"],
     genre: [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy",
+      "Animation",
+      "Mystery",
+      "Sci-fi",
       "Thriller",
+      "Horror",
       "Romance",
-      "Documentary",
-      "War",
-      "Western",
-      "Musical",
-      "Sports",
+      "Crime",
+      "comedy",
+      "War"
     ],
   };
 
-  // 🔍 Handle search logic
-  const handleSearch = async (query) => {
+  // 🔍 Handle search logic && SEARCH FUNCTION WITH DEBOUNCE ---
+  const handleSearch = (query) => {
     setSearchTerm(query);
+
+    if (debounceRef.current) clearTimeout(debounceRef.current); // clear previous timer
 
     if (query.trim() === "") {
       setSearchResults([]);
@@ -51,24 +68,27 @@ const Navbar = () => {
       return;
     }
 
-    setShowSearchOverlay(true);
-    setLoading(true);
+    // delay 500ms before making API call
+    debounceRef.current = setTimeout(async () => {
+      setShowSearchOverlay(true);
+      setLoading(true);
 
-    try {
-      const res = await fetch(`http://localhost:3000/api/search?q=${query}`);
-      if (!res.ok) {
-        setSearchResults([]);
+      try {
+        const res = await fetch(`http://localhost:3000/api/search?q=${query}`);
+        if (!res.ok) {
+          setSearchResults([]);
+          setLoading(false);
+          return;
+        }
+
+        const data = await res.json();
+        setSearchResults(data);
+      } catch (err) {
+        console.error("Search failed:", err);
+      } finally {
         setLoading(false);
-        return;
       }
-
-      const data = await res.json();
-      setSearchResults(data);
-    } catch (err) {
-      console.error("Search failed:", err);
-    } finally {
-      setLoading(false);
-    }
+    }, 500);
   };
 
   return (
@@ -122,28 +142,47 @@ const Navbar = () => {
                 ? "Movies"
                 : "Genres"}
             </h2>
+
             <div className="genre-grid">
               {overlays[activeDropdown].map((item, i) => (
-                <div key={i} className="genre-item">{item}</div>
+                <div
+                  key={i}
+                  className="genre-item"
+                  onClick={() => {
+                    navigate(`/genre/${encodeURIComponent(item)}`);
+                    setActiveDropdown(null);
+                  }}
+                >
+                  {item}
+                </div>
               ))}
             </div>
           </div>
         </div>
       )}
 
+
       {showSearchOverlay && (
         <div className="overlay">
           <button className="close-btn" onClick={() => setShowSearchOverlay(false)}>✕</button>
           <div className="overlay-content">
             <h2>Search Results</h2>
+
             {loading ? (
               <p className="loading-text">Searching...</p>
             ) : searchResults.length > 0 ? (
-              <div className="search-results">
-                {searchResults.map((item, i) => (
-                  <div key={i} className="search-item">
-                    <strong>{item.title}</strong>
-                    <span>{item.type || (item.seasons ? "TV Series" : "Movie")}</span>
+              <div className="search-grid">
+                {searchResults.slice(0, 4).map((item, index) => (
+                  <div key={item._id || index} className="search-card">
+                    <div className="search-poster">
+                      <img src={item.image || "/placeholder.jpg"} alt={item.title} />
+                    </div>
+                    <div className="search-info">
+                      <h3>{item.title}</h3>
+                      <span className="search-type">
+                        {item.type || (item.seasons ? "TV Series" : "Movie")}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -153,6 +192,7 @@ const Navbar = () => {
           </div>
         </div>
       )}
+
     </>
   );
 };
